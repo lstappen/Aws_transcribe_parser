@@ -1,5 +1,5 @@
 # Aws_transcribe_parser
-Parses .json files into word-level, sentence-level etc. files by making use of the timestamps.
+Parses .json files into word-level, sentence-level, etc. .csv files by making use of the timestamps.
 
 ### Usage
 ```
