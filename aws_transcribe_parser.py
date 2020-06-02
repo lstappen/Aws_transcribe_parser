@@ -57,7 +57,12 @@ for json_path in jsons:
     # word and it's timestamp
     word_timestamp_dict = defaultdict(list)
     count = 0 # for correspondence/alignment with word-weise speaker label
-    speaker_items = [i for dic in data['results']['speaker_labels']['segments'] for i in dic['items']]
+    try:
+        speaker_items = [i for dic in data['results']['speaker_labels']['segments'] for i in dic['items']]
+    except KeyError:
+        print("No speaker_labels in ", json_path)
+        continue
+        #exit()
 
     for item in data['results']['items']:
         if item['type'] == 'pronunciation':
@@ -114,4 +119,3 @@ for json_path in jsons:
     speaker_ident_df.to_csv(speaker_path,index=False)   
     
     print(json_path.split(os.path.sep)[-1], 'finished.')
-
